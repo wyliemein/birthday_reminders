@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'oauth2_provider',
+    'birthdays',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +71,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'birthdays_api.wsgi.application'
 
+AUTH_USER_MODEL='birthdays.User'
+
+LOGIN_URL='/admin/login/'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
