@@ -3,8 +3,10 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-import { ValidationProvider, extend } from 'vee-validate'
+import { ValidationProvider, ValidationObserver, extend } from 'vee-validate'
 import { required } from 'vee-validate/dist/rules'
+import VuePhoneNumberInput from 'vue-phone-number-input';
+import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -21,6 +23,10 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
 Vue.component('ValidationProvider', ValidationProvider);
+Vue.component('ValidationObserver', ValidationObserver);
+Vue.component('vue-phone-number-input', VuePhoneNumberInput);
+
+
 
 Vue.config.productionTip = false;
 

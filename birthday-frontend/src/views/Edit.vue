@@ -1,7 +1,7 @@
 <template>
     <div class="pt-5">
         <ValidationObserver v-slot="{ invalid }">
-            <form @submit.prevent="create" method="post">
+            <form @submit.prevent="update" method="post">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <validation-provider rules="required" v-slot="{errors}">
@@ -19,7 +19,7 @@
                     <span>{{ errors[0] }}</span>
                     </validation-provider>
                 </div>
-                <div class="form-group inline">
+                <div class="form-group">
                     <label for="birthday">Birthday</label>
                     <validation-provider rules="required" v-slot="{errors}">
                         <b-input-group class="mb-3">
@@ -85,12 +85,8 @@
     </div>
 </template>
 
-
-
 <script>
-
 import axios from 'axios';
-
 export default {
     data() {
         return {
@@ -101,23 +97,26 @@ export default {
                 birthday: '',
                 time: '',
             },
-            errors: '',
             submitted: false
         }
     },
+    mounted() {
+        axios.get('http://127.0.0.1:8000/api/contacts/' + this.$route.params.id+ '/')
+            .then( response => {
+                console.log(response.data)
+                this.contact = response.data
+            });
+    },
     methods: {
-        create: function (e) {
+        update: function (e) {
             console.log(e)
-            this.submitted = true;
-                axios.post('http://127.0.0.1:8000/api/contacts/',
+                axios.put(`http://127.0.0.1:8000/api/contacts/${this.contact.id}/`,
                         this.contact
-                    )
-                    .then(response => {
-                        console.log(response)
+                    ).then(response => {
+                        console.log(response.data)
                         this.$router.push('/contacts');
                     })
         },
     },
 }
-
 </script>
