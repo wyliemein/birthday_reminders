@@ -17,15 +17,14 @@ client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
 def send_sms_reminder(contact_id):
     """Send a reminder to a phone using Twilio SMS"""
     # Get our contact from the database
+    print("sending... ", contact_id)
     try:
         contact = Contact.objects.get(pk=contact_id)
     except Contact.DoesNotExist:
         # The contact we were trying to remind someone about
         # has been deleted, so we don't need to do anything
         return
-
     body = contact.message
-
     client.messages.create(
         body=body,
         to=contact.phone_number,
