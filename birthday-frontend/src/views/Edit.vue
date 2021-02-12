@@ -96,6 +96,7 @@ export default {
                 phone_number: '',
                 birthday: '',
                 time: '',
+                owner_id: '',
             },
             submitted: false
         }

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import axios from 'axios'
+import axios from 'axios';
 
 
 Vue.use(Vuex);
@@ -9,13 +9,13 @@ export default new Vuex.Store({
   state: {
     status: '',
     token: localStorage.getItem('token') || '',
-    user : {}
+    user : {},
   },
   mutations: {
     auth_request(state){
       state.status = 'loading'
     },
-    auth_success(state, token, user){
+    auth_success(state, {token, user}){
       state.status = 'success'
       state.token = token
       state.user = user
@@ -35,10 +35,10 @@ export default new Vuex.Store({
         axios({url: 'http://127.0.0.1:8000/api/api-token-auth/', data: user, method: 'POST' })
         .then(resp => {
           const token = resp.data.token
-          const user = resp.data.user
+          const user = resp.data.user_id
           localStorage.setItem('token', token)
           axios.defaults.headers.common['Authorization'] = "Token" + " " + token
-          commit('auth_success', token, user)
+          commit('auth_success', {token, user})
           resolve(resp)
         })
         .catch(err => {
@@ -57,10 +57,10 @@ export default new Vuex.Store({
             axios({url: 'http://127.0.0.1:8000/api/api-token-auth/', data: user, method: 'POST' })
             .then(resp => {
               const token = resp.data.token
-              const user = resp.data.username
+              const user = resp.data.user_id
               localStorage.setItem('token', token)
               axios.defaults.headers.common['Authorization'] = "Token" + " " + token
-              commit('auth_success', token, user)
+              commit('auth_success', {token, user})
               resolve(resp)
             })
             .catch(err => {
@@ -89,5 +89,6 @@ export default new Vuex.Store({
   getters : {
     isLoggedIn: state => !!state.token,
     authStatus: state => state.status,
+    currUser: state => {return state.user},
   }
 });

@@ -17,6 +17,7 @@
      <b-col>
       <input required v-model="password" type="password" placeholder="Password"/>
      </b-col>
+        <span v-if="this.$store.getters.authStatus === 'error'">Username or Password Incorrect</span>
      <hr>
       <b-col><button type="submit">Login</button></b-col>
       <b-col><router-link to="/register">Or Sign Up!</router-link></b-col>

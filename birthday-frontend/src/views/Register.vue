@@ -22,8 +22,9 @@
         <b-col><input id="password-confirm" type="password" v-model="password_confirmation" required></b-col>
         <b-col><span v-if="password!==password_confirmation && password_confirmation !== ''"> Passwords do not match</span></b-col>
       </div>
+      <span v-if="this.$store.getters.authStatus !== ''">Username already taken</span>
       <div style="padding: 1em;">
-          <button type="submit">Register</button>
+          <button type="submit" :disabled="password!==password_confirmation">Register</button>
       </div>
     </form>
     <router-link to='/login'>Back to Login</router-link>

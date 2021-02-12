@@ -96,6 +96,7 @@ export default {
                 phone_number: '',
                 birthday: '',
                 time: '',
+                owner_id: '',
             },
             errors: '',
             submitted: false
@@ -104,6 +105,7 @@ export default {
     methods: {
         create: function (e) {
             console.log(e)
+            this.contact.owner_id = this.$store.getters.currUser;
             this.submitted = true;
                 axios.post('http://127.0.0.1:8000/api/contacts/',
                         this.contact

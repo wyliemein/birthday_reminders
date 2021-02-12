@@ -12,12 +12,16 @@ from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 
 class ContactList(generics.ListCreateAPIView):
-    queryset = Contact.objects.all()
     serializer_class = ContactSerializer
+    def get_queryset(self):
+        user = self.request.user
+        return Contact.objects.filter(owner_id=user)
 
 class ContactDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Contact.objects.all()
     serializer_class = ContactSerializer
+    def get_queryset(self):
+        user = self.request.user
+        return Contact.objects.filter(owner_id=user)
 
 class CreateUserView(generics.CreateAPIView):
     model = get_user_model()

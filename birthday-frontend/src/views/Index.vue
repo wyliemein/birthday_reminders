@@ -33,7 +33,6 @@
 
 
 <script>
-
 import axios from 'axios';
 
 export default {
@@ -60,7 +59,7 @@ export default {
                 .then( response => {
                     this.contacts = response.data
                 });
-        }
+        },
     },
 };
 </script>

@@ -8,7 +8,7 @@ class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
         fields = ('id', 'name', 'message', 'time', 'phone_number',
-            'birthday', 'created_at', 'updated_at', 'task_id',
+            'birthday', 'created_at', 'updated_at', 'task_id', 'owner_id'
         )
 
 UserModel = get_user_model()
