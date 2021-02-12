@@ -21,8 +21,8 @@
                 </div>
                 <div class="form-group inline">
                     <label for="birthday">Birthday</label>
-                    <validation-provider rules="required" v-slot="{errors}">
-                        <b-input-group class="mb-3">
+                    <validation-provider rules="required">
+                        <b-input-group>
                             <b-input-group-prepend>
                                 <b-form-datepicker
                                 v-model="contact.birthday"
@@ -43,14 +43,10 @@
                             ></b-form-input>
                             <b-form-timepicker
                                 v-model="contact.time"
-                                placeholder="Time Message will be Sent"
+                                placeholder="Time"
                                 locale="en"
                             ></b-form-timepicker>
                         </b-input-group>
-                    <div class="invalid-feedback">
-                        Please provide a valid date.
-                    </div>
-                    <span>{{ errors[0] }}</span>
                     </validation-provider>
                 </div>
                 <div class="form-group">

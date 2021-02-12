@@ -7,6 +7,8 @@ import { ValidationProvider, ValidationObserver, extend } from 'vee-validate'
 import { required } from 'vee-validate/dist/rules'
 import VuePhoneNumberInput from 'vue-phone-number-input';
 import 'vue-phone-number-input/dist/vue-phone-number-input.css';
+import Axios from 'axios'
+
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -26,9 +28,14 @@ Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
 Vue.component('vue-phone-number-input', VuePhoneNumberInput);
 
-
-
 Vue.config.productionTip = false;
+
+
+Vue.prototype.$http = Axios;
+const token = localStorage.getItem('token')
+if (token) {
+  Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+}
 
 new Vue({
   router,
