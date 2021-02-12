@@ -1,5 +1,9 @@
 # birthday_reminders
-=======
+To activate env: source ./env/bin/activate
+
+run django: python manage.py runserver
+run frontend: npm run
+
 Simple CRUD app for your contacts that allows you to send scheduled, customized messages to your friends on their birthday.
 
 Uses:
@@ -20,4 +24,3 @@ How To Use:
 7. start redis
 8. start dramatiq
 9. use on local server
->>>>>>> c59f4092e1e5907a574115fb26b374fc6581d581
