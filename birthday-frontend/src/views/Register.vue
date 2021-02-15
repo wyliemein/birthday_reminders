@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="register">
     <h4>Sign Up</h4>
     <form @submit.prevent="register">
       <label for="name">Name</label>

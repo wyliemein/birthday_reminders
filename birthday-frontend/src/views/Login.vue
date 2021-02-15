@@ -1,5 +1,5 @@
 <template>
- <div>
+ <div id="login">
     <h1>Birthday Reminders</h1>
    <form class="Login" @submit.prevent="login">
      <b-col>

@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import django_heroku
 from pathlib import Path
 import os
 
@@ -22,13 +22,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'j6&v%%1k6j&arsuoj!dwxrb05+f&di_xg!0&h+bzxgc_5y&)_x'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://localhost:8080/']
 
+CSRF_COOKIE_SECURE = True
+
+SESSION_COOKIE_SECURE = True
 
 # Application definition
 
@@ -56,7 +59,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = False
 
 ROOT_URLCONF = 'birthdays_api.urls'
 
@@ -142,9 +145,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-TWILIO_ACCOUNT_SID = 'ACbc38a7192815e3b877461a79152b0183'
-TWILIO_AUTH_TOKEN = '2747b82f74b37cc4218ccd2742a4f12a'
-TWILIO_NUMBER = '+18068535611'
+TWILIO_ACCOUNT_SID = os.environ['TWILIO_ACCOUNT_SID']
+TWILIO_AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
+TWILIO_NUMBER = os.environ['TWILIO_NUMBER']
 
 REDIS_LOCAL = 'localhost'
 
@@ -169,3 +172,5 @@ DRAMATIQ_BROKER = {
 # Defines which database should be used to persist Task objects when the
 # AdminMiddleware is enabled.  The default value is "default".
 DRAMATIQ_TASKS_DATABASE = "default"
+
+django_heroku.settings(locals())
