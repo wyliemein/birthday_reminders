@@ -44,6 +44,10 @@ _OLD_VIRTUAL_PATH="$PATH"
 PATH="$VIRTUAL_ENV/bin:$PATH"
 export PATH
 
+SECRET_KEY='j6&v%%1k6j&arsuoj!dwxrb05+f&di_xg!0&h+bzxgc_5y&)_x'
+export SECRET_KEY
+
+
 # unset PYTHONHOME if set
 # this will fail if PYTHONHOME is set to the empty string (which is bad anyway)
 # could use `if (set -u; : $PYTHONHOME) ;` in bash
