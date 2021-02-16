@@ -154,13 +154,13 @@ TWILIO_ACCOUNT_SID = os.environ['TWILIO_ACCOUNT_SID']
 TWILIO_AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
 TWILIO_NUMBER = os.environ['TWILIO_NUMBER']
 
-REDIS_LOCAL = 'localhost'
-
+REDIS_LOCAL = 'redis://localhost:6379/0'
+REDIS_URL = os.environ['REDIS_URL']
 
 DRAMATIQ_BROKER = {
     "BROKER": "dramatiq.brokers.redis.RedisBroker",
     "OPTIONS": {
-        "url": 'redis://'+ REDIS_LOCAL +':6379/0',
+        "url": REDIS_URL,
     },
     "MIDDLEWARE": [
         "dramatiq.middleware.Prometheus",

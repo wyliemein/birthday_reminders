@@ -73,5 +73,5 @@ class Contact(models.Model):
         #super(Contact, self).save(*args, **kwargs)
 
     def cancel_message(self):
-        redis_client = redis.Redis(host=settings.REDIS_LOCAL, port=6379, db=0)
+        redis_client = redis.Redis(host=settings.REDIS_URL)
         redis_client.hdel("dramatiq:default.DQ.msgs", self.task_id)
