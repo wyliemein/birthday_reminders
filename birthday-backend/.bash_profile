@@ -1,0 +1,4 @@
+export SECRET_KEY='j6&v%%1k6j&arsuoj!dwxrb05+f&di_xg!0&h+bzxgc_5y&)_x'
+export TWILIO_AUTH_TOKEN='2747b82f74b37cc4218ccd2742a4f12a'
+export TWILIO_ACCOUNT_SID='ACbc38a7192815e3b877461a79152b0183'
+export TWILIO_NUMBER='+18068535611'
