@@ -107,7 +107,7 @@ export default {
             console.log(e)
             this.contact.owner_id = this.$store.getters.currUser;
             this.submitted = true;
-                axios.post('http://127.0.0.1:8000/api/contacts/',
+                axios.post('https://birthdayreminders-api.herokuapp.com/api/contacts/',
                         this.contact
                     )
                     .then(response => {

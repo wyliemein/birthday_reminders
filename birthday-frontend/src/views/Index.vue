@@ -47,7 +47,7 @@ export default {
     methods: {
         deleteContact: function(cont) {
             if (confirm('Delete ' + cont.name)) {
-                axios.delete(`http://127.0.0.1:8000/api/contacts/${cont.id}/`)
+                axios.delete(`https://birthdayreminders-api.herokuapp.com/api/contacts/${cont.id}/`)
                     .then( response => {
                         console.log(response)
                         this.all();
@@ -55,7 +55,7 @@ export default {
             }
         },
         all: function () {
-            axios.get('http://127.0.0.1:8000/api/contacts/')
+            axios.get('https://birthdayreminders-api.herokuapp.com/api/contacts/')
                 .then( response => {
                     this.contacts = response.data
                 });

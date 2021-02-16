@@ -102,7 +102,7 @@ export default {
         }
     },
     mounted() {
-        axios.get('http://127.0.0.1:8000/api/contacts/' + this.$route.params.id+ '/')
+        axios.get('https://birthdayreminders-api.herokuapp.com/api/contacts/' + this.$route.params.id+ '/')
             .then( response => {
                 console.log(response.data)
                 this.contact = response.data
@@ -111,7 +111,7 @@ export default {
     methods: {
         update: function (e) {
             console.log(e)
-                axios.put(`http://127.0.0.1:8000/api/contacts/${this.contact.id}/`,
+                axios.put(`https://birthdayreminders-api.herokuapp.com/api/contacts/${this.contact.id}/`,
                         this.contact
                     ).then(response => {
                         console.log(response.data)
