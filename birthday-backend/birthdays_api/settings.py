@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import django_heroku
 from pathlib import Path
 import os
+import environ
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -149,9 +150,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-TWILIO_ACCOUNT_SID = os.environ['TWILIO_ACCOUNT_SID']
-TWILIO_AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
-TWILIO_NUMBER = os.environ['TWILIO_NUMBER']
+TWILIO_ACCOUNT_SID = env('TWILIO_ACCOUNT_SID')
+TWILIO_AUTH_TOKEN = env('TWILIO_AUTH_TOKEN')
+TWILIO_NUMBER = env('TWILIO_NUMBER')
 
 REDIS_LOCAL = 'localhost'
 
