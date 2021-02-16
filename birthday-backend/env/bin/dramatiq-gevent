@@ -1,4 +1,4 @@
-#!/Users/gardnermein/Desktop/web_apps/birthday_reminders/env/bin/python3
+#!/Users/gardnermein/Desktop/web_apps/birthday_reminders/birthday-backend/env/bin/python3
 try:
     from gevent import monkey; monkey.patch_all()  # noqa
 except ImportError:

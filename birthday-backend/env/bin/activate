@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/gardnermein/Desktop/web_apps/birthday_reminders/env"
+VIRTUAL_ENV="/Users/gardnermein/Desktop/web_apps/birthday_reminders/birthday-backend/env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
