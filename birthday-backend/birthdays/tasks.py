@@ -4,19 +4,16 @@ import dramatiq
 
 from django.conf import settings
 from twilio.rest import Client
-from celery import Celery
 
 from .models import Contact
 
-app = Celery('tasks', broker=settings.REDIS_URL)
 
 # Uses credentials from the TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN
 # environment variables
 client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
 
 
-#@dramatiq.actor
-@app.task
+@dramatiq.actor
 def send_sms_reminder(contact_id):
     """Send a reminder to a phone using Twilio SMS"""
     # Get our contact from the database

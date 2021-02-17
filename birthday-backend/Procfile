@@ -1,1 +1,2 @@
 web: gunicorn birthdays_api.wsgi
+web: gunicorn birthdays.wsgi
