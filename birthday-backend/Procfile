@@ -1,2 +1,2 @@
 web: gunicorn birthdays_api.wsgi
-worker: run dramatiq
+worker: rundramatiq
