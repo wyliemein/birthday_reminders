@@ -50,11 +50,9 @@ class Contact(models.Model):
         print(milli_to_wait)
         # Schedule the Dramatiq task
         from .tasks import send_sms_reminder
-        result = send_sms_reminder.send_with_options(
-            args=(self.pk,),
-            delay=milli_to_wait)
-        print(result.options)
-        return result.options['redis_message_id']
+        send_sms_reminder.delay(self.pk, countdown=time_of_message)
+        result = uuid.uuid1()
+        return result
 
     def save(self, *args, **kwargs):
         """Custom save method which also schedules a reminder"""
