@@ -164,12 +164,12 @@ DRAMATIQ_BROKER = {
     ]
 }
 
-CACHES = {
-    "default": {
-         "BACKEND": "redis_cache.RedisCache",
-         "LOCATION": REDIS_URL,
-    }
-}
+# CACHES = {
+#     "default": {
+#          "BACKEND": "redis_cache.RedisCache",
+#          "LOCATION": REDIS_URL,
+#     }
+# }
 # Defines which database should be used to persist Task objects when the
 # AdminMiddleware is enabled.  The default value is "default".
 DRAMATIQ_TASKS_DATABASE = "default"
