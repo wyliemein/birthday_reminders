@@ -1,2 +1,2 @@
-web: gunicorn birthdays.wsgi:application
+web: gunicorn birthdays_api.wsgi
 worker: python manage.py rundramatiq
