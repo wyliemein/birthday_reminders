@@ -19,9 +19,11 @@ import dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+print(BASE_DIR)
 dotenv_file = os.path.join(BASE_DIR, ".env")
 if os.path.isfile(dotenv_file):
     dotenv.load_dotenv(dotenv_file)
+print(dotenv_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -30,19 +32,11 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = ['birthdayreminders.herokuapp.com']
-
-CSRF_COOKIE_SECURE = True
-
-SESSION_COOKIE_SECURE = True
-
-CORS_ALLOW_ALL_ORIGINS = False
-
-CORS_ORIGIN_WHITELIST = (
-    'birthdayreminders.herokuapp.com',
-)
+DEBUG = os.getenv('DEBUG')
+ALLOWED_HOSTS=os.getenv('ALLOWED_HOSTS')
+CSRF_COOKIE_SECURE=os.getenv('CRSF_COOKIE_SECURE')
+SESSION_COOKIE_SECURE=os.getenv('SESSION_COOKIE_SECURE')
+CORS_ALLOW_ALL_ORIGINS=os.getenv('CORS_ALLOW_ALL_ORIGINS')
 
 # Application definition
 
