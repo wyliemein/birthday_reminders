@@ -157,7 +157,7 @@ REDIS_URL = os.getenv('REDIS_URL')
 DRAMATIQ_BROKER = {
     "BROKER": "dramatiq.brokers.redis.RedisBroker",
     "OPTIONS": {
-        "url": os.getenv('REDIS_URL'),
+        "url": REDIS_URL,
     },
     "MIDDLEWARE": [
         "dramatiq.middleware.Prometheus",
@@ -173,7 +173,7 @@ DRAMATIQ_BROKER = {
 CACHES = {
     "default": {
          "BACKEND": "redis_cache.RedisCache",
-         "LOCATION": os.getenv('REDIS_URL'),
+         "LOCATION": REDIS_URL,
     }
 }
 # Defines which database should be used to persist Task objects when the
