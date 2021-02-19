@@ -62,6 +62,7 @@ class Contact(models.Model):
         if self.task_id:
             # Revoke that task in case its time has changed
             self.cancel_message()
+            super(Contact, self).delete(*args, **kwargs)
 
         # Save our appointment, which populates self.pk,
         # which is used in schedule_reminder
@@ -76,5 +77,4 @@ class Contact(models.Model):
 
     def cancel_message(self):
         redis_client = redis.from_url(settings.REDIS_URL)
-        print(redis_client)
         redis_client.hdel("dramatiq:default.DQ.msgs", self.task_id)
