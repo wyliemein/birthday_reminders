@@ -33,6 +33,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG=os.getenv('DEBUG')
 ALLOWED_HOSTS=['.herokuapp.com']
 CORS_ALLOW_ALL_ORIGINS=True
+print("secret key: ", SECRET_KEY)
 print("Debug is", DEBUG)
 print("CORS set to allow all: ", CORS_ALLOW_ALL_ORIGINS)
 
