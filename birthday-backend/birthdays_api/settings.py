@@ -30,8 +30,8 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG=False
-ALLOWED_HOSTS=['birthdayreminders.herokuapp.com']
+DEBUG=os.getenv('DEBUG')
+ALLOWED_HOSTS=['.herokuapp.com']
 CORS_ALLOW_ALL_ORIGINS=True
 # DEBUG = os.getenv('DEBUG')
 # ALLOWED_HOSTS=os.getenv('ALLOWED_HOSTS')
