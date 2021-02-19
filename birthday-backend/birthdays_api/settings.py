@@ -30,12 +30,15 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')
-ALLOWED_HOSTS=os.getenv('ALLOWED_HOSTS')
-CSRF_COOKIE_SECURE=os.getenv('CRSF_COOKIE_SECURE')
-CSRF_TRUSTED_ORIGINS=os.getenv('CRSF_TRUSTED_ORIGINS')
-CORS_ALLOW_ALL_ORIGINS=os.getenv('CORS_ALLOW_ALL_ORIGINS')
-CORS_ORIGIN_WHITELIST=os.getenv('CORS_ORIGIN_WHITELIST')
+DEBUG=False
+ALLOWED_HOSTS=['birthdayreminders.herokuapp.com']
+CORS_ALLOW_ALL_ORIGINS=True
+# DEBUG = os.getenv('DEBUG')
+# ALLOWED_HOSTS=os.getenv('ALLOWED_HOSTS')
+# CSRF_COOKIE_SECURE=os.getenv('CRSF_COOKIE_SECURE')
+# CSRF_TRUSTED_ORIGINS=os.getenv('CRSF_TRUSTED_ORIGINS')
+# CORS_ALLOW_ALL_ORIGINS=os.getenv('CORS_ALLOW_ALL_ORIGINS')
+# CORS_ORIGIN_WHITELIST=os.getenv('CORS_ORIGIN_WHITELIST')
 
 
 # Application definition
@@ -103,7 +106,6 @@ LOGIN_URL='/admin/login/'
 
 DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-print(DATABASES)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -165,12 +167,12 @@ DRAMATIQ_BROKER = {
     ]
 }
 
-# CACHES = {
-#     "default": {
-#          "BACKEND": "redis_cache.RedisCache",
-#          "LOCATION": REDIS_URL,
-#     }
-# }
+CACHES = {
+    "default": {
+         "BACKEND": "redis_cache.RedisCache",
+         "LOCATION": REDIS_URL,
+    }
+}
 # Defines which database should be used to persist Task objects when the
 # AdminMiddleware is enabled.  The default value is "default".
 DRAMATIQ_TASKS_DATABASE = "default"
