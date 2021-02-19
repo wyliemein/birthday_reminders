@@ -60,8 +60,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS=True
-
 ROOT_URLCONF = 'birthdays_api.urls'
 
 TEMPLATES = [
@@ -171,6 +169,8 @@ DRAMATIQ_BROKER = {
 # Defines which database should be used to persist Task objects when the
 # AdminMiddleware is enabled.  The default value is "default".
 DRAMATIQ_TASKS_DATABASE = "default"
+
+CORS_ALLOW_ALL_ORIGINS=True
 
 django_heroku.settings(locals())
 
