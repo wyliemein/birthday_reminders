@@ -65,12 +65,14 @@ class Contact(models.Model):
 
         # Save our appointment, which populates self.pk,
         # which is used in schedule_reminder
-        super(Contact, self).save(*args, **kwargs)
-
+        if self.pk is None:
+            super(Contact, self).save(*args, **kwargs)
+            self.task_id = self.schedule_message()
+        else:
+            self.task_id = self.schedule_message()
         # Schedule a new reminder task for this appointment
-        self.task_id = self.schedule_message()
         # Save our appointment again, with the new task_id
-        super(Contact, self).save(*args, **kwargs)
+            super(Contact, self).save(*args, **kwargs)
 
     def cancel_message(self):
         redis_client = redis.from_url(settings.REDIS_URL)
