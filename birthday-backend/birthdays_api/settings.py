@@ -33,12 +33,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG=os.getenv('DEBUG')
 ALLOWED_HOSTS=['.herokuapp.com']
 CORS_ALLOW_ALL_ORIGINS=True
-# DEBUG = os.getenv('DEBUG')
-# ALLOWED_HOSTS=os.getenv('ALLOWED_HOSTS')
-# CSRF_COOKIE_SECURE=os.getenv('CRSF_COOKIE_SECURE')
-# CSRF_TRUSTED_ORIGINS=os.getenv('CRSF_TRUSTED_ORIGINS')
-# CORS_ALLOW_ALL_ORIGINS=os.getenv('CORS_ALLOW_ALL_ORIGINS')
-# CORS_ORIGIN_WHITELIST=os.getenv('CORS_ORIGIN_WHITELIST')
+print("Debug is", DEBUG)
+print("CORS set to allow all: ", CORS_ALLOW_ALL_ORIGINS)
 
 
 # Application definition
@@ -167,12 +163,12 @@ DRAMATIQ_BROKER = {
     ]
 }
 
-CACHES = {
-    "default": {
-         "BACKEND": "redis_cache.RedisCache",
-         "LOCATION": REDIS_URL,
-    }
-}
+# CACHES = {
+#     "default": {
+#          "BACKEND": "redis_cache.RedisCache",
+#          "LOCATION": REDIS_URL,
+#     }
+# }
 # Defines which database should be used to persist Task objects when the
 # AdminMiddleware is enabled.  The default value is "default".
 DRAMATIQ_TASKS_DATABASE = "default"
