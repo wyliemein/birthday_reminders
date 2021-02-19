@@ -32,8 +32,6 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG=os.getenv('DEBUG')
 ALLOWED_HOSTS=['birthdayreminders.herokuapp.com']
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -160,17 +158,19 @@ DRAMATIQ_BROKER = {
     ]
 }
 
-# CACHES = {
-#     "default": {
-#          "BACKEND": "redis_cache.RedisCache",
-#          "LOCATION": REDIS_URL,
-#     }
-# }
+CACHES = {
+    "default": {
+         "BACKEND": "redis_cache.RedisCache",
+         "LOCATION": REDIS_URL,
+    }
+}
 # Defines which database should be used to persist Task objects when the
 # AdminMiddleware is enabled.  The default value is "default".
 DRAMATIQ_TASKS_DATABASE = "default"
 
-CORS_ALLOW_ALL_ORIGINS=True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+CORS_ALLOW_ALL_ORIGINS = True
 
 django_heroku.settings(locals())
 
