@@ -32,10 +32,6 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG=os.getenv('DEBUG')
 ALLOWED_HOSTS=['.herokuapp.com']
-CORS_ALLOW_ALL_ORIGINS=True
-print("secret key: ", SECRET_KEY)
-print("Debug is", DEBUG)
-print("CORS set to allow all: ", CORS_ALLOW_ALL_ORIGINS)
 
 
 # Application definition
@@ -63,6 +59,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ALLOW_ALL_ORIGINS=True
 
 ROOT_URLCONF = 'birthdays_api.urls'
 
