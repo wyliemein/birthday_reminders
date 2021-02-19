@@ -30,7 +30,7 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG=os.getenv('DEBUG')
+DEBUG=False
 ALLOWED_HOSTS=['birthdayreminders.herokuapp.com']
 # Application definition
 
@@ -168,8 +168,6 @@ CACHES = {
 # AdminMiddleware is enabled.  The default value is "default".
 DRAMATIQ_TASKS_DATABASE = "default"
 
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
 CORS_ALLOW_ALL_ORIGINS = True
 
 django_heroku.settings(locals())
