@@ -28,6 +28,8 @@ class Contact(models.Model):
     def schedule_message(self):
     # Calculate the correct time to send this reminder
         now_time_date = datetime.datetime.utcnow()
+        #offset should be coming from browser but even then is subject to timechange issues
+        #using a temporary constant for my timezone until updating with better approach.
         offset = datetime.timedelta(hours=8)
         current_time_date = now_time_date - offset
         current_date = current_time_date.date()
@@ -55,23 +57,19 @@ class Contact(models.Model):
         return result.options['redis_message_id']
 
     def save(self, *args, **kwargs):
-        """Custom save method which also schedules a reminder"""
-        # Check if we have scheduled a reminder for this appointment before
-        print("task id: ",self.task_id)
+        # Check if we have scheduled a message for this contact before
         if self.task_id:
             # Revoke that task in case its time has changed
             self.cancel_message()
             super(Contact, self).delete(*args, **kwargs)
 
-        # Save our appointment, which populates self.pk,
+        # Save our contact, which populates self.pk,
         # which is used in schedule_reminder
         if self.pk is None:
             super(Contact, self).save(*args, **kwargs)
             self.task_id = self.schedule_message()
         else:
             self.task_id = self.schedule_message()
-        # Schedule a new reminder task for this appointment
-        # Save our appointment again, with the new task_id
             super(Contact, self).save(*args, **kwargs)
 
     def cancel_message(self):

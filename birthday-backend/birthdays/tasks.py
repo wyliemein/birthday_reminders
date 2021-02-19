@@ -30,3 +30,4 @@ def send_sms_reminder(contact_id):
         to=contact.phone_number,
         from_=settings.TWILIO_NUMBER,
     )
+    #If there is more room for task storage, once message sent, resave message for next year

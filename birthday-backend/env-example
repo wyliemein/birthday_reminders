@@ -1,0 +1,9 @@
+Example format, not real values. Replace with local dev requirements and put in a .env file!
+DATABASE_URL='sqlite:///db.sqlite3'
+SECRET_KEY='j6&v%%1k6j&arsdfdfsdwxrb05+f&di_xg!0&h+bzxgc_5y&)_x'
+TWILIO_AUTH_TOKEN='2747b82f74bsdfsd4218ccd2742a4f12a'
+TWILIO_ACCOUNT_SID='ACbc38a71sdfdsf5e3b877461a79152b0183'
+TWILIO_NUMBER='+18238535611'
+REDIS_URL='redis://localhost:6379/0'
+DEBUG=True
+CORS_ALLOW_ALL_ORIGINS=True
