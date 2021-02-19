@@ -35,7 +35,8 @@ ALLOWED_HOSTS=['birthdayreminders.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
-    "django_dramatiq",
+    'corsheaders',
+    'django_dramatiq',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
-    'corsheaders',
     'birthdays',
 ]
 
