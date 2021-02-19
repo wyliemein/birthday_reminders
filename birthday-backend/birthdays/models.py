@@ -70,8 +70,9 @@ class Contact(models.Model):
         # Schedule a new reminder task for this appointment
         self.task_id = self.schedule_message()
         # Save our appointment again, with the new task_id
-        #super(Contact, self).save(*args, **kwargs)
+        super(Contact, self).save(*args, **kwargs)
 
     def cancel_message(self):
         redis_client = redis.from_url(settings.REDIS_URL)
+        print(redis_client)
         redis_client.hdel("dramatiq:default.DQ.msgs", self.task_id)
